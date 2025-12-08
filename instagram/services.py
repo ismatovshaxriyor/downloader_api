@@ -9,6 +9,7 @@ def download_video(url: str, platform: str = "youtube") -> str:
     Path(output_dir).mkdir(parents=True, exist_ok=True)
 
     ydl_opts = {
+        'cookiefile': 'cookies.txt',
         'outtmpl': os.path.join(output_dir, '%(title)s.%(ext)s'),
         'quiet': False,
     }
@@ -38,6 +39,7 @@ def download_audio(url: str, platform: str = "youtube") -> str:
     ydl_opts = {
         'format': 'bestaudio/best',
         'outtmpl': os.path.join(output_dir, '%(title)s.%(ext)s'),
+        'cookiefile': 'cookies.txt',
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
