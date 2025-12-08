@@ -14,14 +14,15 @@ def download_video(url: str, platform: str = "youtube") -> str:
     }
 
     if platform.lower() == "instagram":
+        yt_dlp["username"] = settings.INSTAGRAM_USERNAME
+        yt_dlp['password'] = settings.INSTAGRAM_PASSWORD
+        yt_dlp['cookiefile'] = 'instagram_cookies.txt'
         ydl_opts['format'] = 'best'
         ydl_opts['http_headers'] = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         }
     elif platform.lower() == "youtube":
-        yt_dlp["username"] = settings.INSTAGRAM_USERNAME,
-        yt_dlp['password'] = settings.INSTAGRAM_PASSWORD,
-        ydl_opts['cookiefile'] = 'cookies.txt',
+        ydl_opts['cookiefile'] = 'cookies.txt'
         ydl_opts['format'] = 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'
         ydl_opts['merge_output_format'] = 'mp4'
 
@@ -51,6 +52,7 @@ def download_audio(url: str, platform: str = "youtube") -> str:
 
     if platform.lower() == "instagram":
         ydl_opts['http_headers'] = {
+            'cookiefile': 'instagram_cookies.txt',
             'username': settings.INSTAGRAM_USERNAME,
             'password': settings.INSTAGRAM_PASSWORD,
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
