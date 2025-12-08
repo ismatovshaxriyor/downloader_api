@@ -14,9 +14,9 @@ def download_video(url: str, platform: str = "youtube") -> str:
     }
 
     if platform.lower() == "instagram":
-        yt_dlp["username"] = settings.INSTAGRAM_USERNAME
-        yt_dlp['password'] = settings.INSTAGRAM_PASSWORD
-        yt_dlp['cookiefile'] = 'instagram_cookies.txt'
+        ydl_opts["username"] = settings.INSTAGRAM_USERNAME
+        ydl_opts['password'] = settings.INSTAGRAM_PASSWORD
+        ydl_opts['cookiefile'] = 'instagram_cookies.txt'
         ydl_opts['format'] = 'best'
         ydl_opts['http_headers'] = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
