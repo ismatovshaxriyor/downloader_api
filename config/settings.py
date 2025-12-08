@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -124,6 +127,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
+
+INSTAGRAM_USERNAME = os.environ.get("INSTAGRAM_USERNAME")
+INSTAGRAM_PASSWORD = os.environ.get("INSTAGRAM_PASSWORD")
 
 
 SPECTACULAR_SETTINGS = {
